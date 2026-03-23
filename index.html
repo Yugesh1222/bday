@@ -11,30 +11,7 @@
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="bingbot" content="noindex, nofollow">
 
-  <!-- Open Graph (WhatsApp & Instagram preview) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourwebsite.com/">
-  <meta property="og:site_name" content="For Rakshi 💗">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="this is for you, Rakshi 🌸">
-  <meta property="og:description" content="I made you a small corner of the internet. Just yours. Open it when you're ready ✨">
-  <meta property="og:image" content="https://i.ibb.co/zTRZX7k6/stricker5-1.webp">
-  <meta property="og:image:secure_url" content="https://i.ibb.co/zTRZX7k6/stricker5-1.webp">
-  <meta property="og:image:type" content="image/webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="A birthday surprise for Rakshi — made with love 💗">
-
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://yourwebsite.com/">
-  <meta name="twitter:title" content="this is for you, Rakshi 🌸">
-  <meta name="twitter:description" content="I made you a small corner of the internet. Just yours. Open it when you're ready ✨">
-  <meta name="twitter:image" content="https://i.ibb.co/zTRZX7k6/stricker5-1.webp">
-  <meta name="twitter:image:alt" content="A birthday surprise for Rakshi — made with love 💗">
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500&family=Dancing+Script:wght@400;500;600&display=swap" rel="stylesheet">
-
+ 
 <style>
 /* ===== DESIGN TOKENS ===== */
 :root {
@@ -926,41 +903,40 @@ button:hover::before { opacity: 1; }
 }
 
 @media (min-width: 900px) {
-  /* Desktop: lock sections to exactly 100vh */
+  /* Desktop: natural height sections */
   section {
-    height: 100vh;
-    min-height: unset;
-    padding: 0;
+    min-height: 100vh;
+    height: auto;
+    padding: 48px 0;
     overflow: visible;
   }
 
   .container {
-    width: 78%;
-    max-width: 680px;
-    padding: 24px 48px;
-    border-radius: 26px;
-    max-height: 94vh;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(244,160,180,0.25) transparent;
+    width: 60%;
+    max-width: 640px;
+    min-width: 520px;
+    padding: 40px 52px;
+    border-radius: 28px;
+    max-height: none;
+    overflow-y: visible;
   }
 
-  h1 { font-size: 22px; margin-bottom: 10px; }
-  p  { font-size: 13px; margin: 4px 0; }
+  h1 { font-size: 26px; margin-bottom: 14px; }
+  p  { font-size: 14.5px; margin: 6px 0; line-height: 1.7; }
 
   button {
-    font-size: 13px;
-    padding: 10px 30px;
-    margin-top: 12px;
+    font-size: 14px;
+    padding: 12px 36px;
+    margin-top: 18px;
   }
 
-  .divider { margin: 7px auto; }
+  .divider { margin: 10px auto; }
 
-  .sectionSticker { width: 68px; bottom: 14px; right: 14px; }
+  .sectionSticker { width: 72px; bottom: 16px; right: 16px; }
 
   /* Videos section */
-  .us-grid { gap: 9px; margin-top: 12px; }
-  .us-grid video { height: 100px; }
+  .us-grid { gap: 14px; margin-top: 18px; }
+  .us-grid video { height: 130px; }
 
   /* Popups */
   .lyrics-box { max-width: 500px; padding: 32px 30px; }
@@ -2389,27 +2365,27 @@ button:hover::before { opacity: 1; }
     <div class="divider"></div>
     <div class="us-grid">
       <div class="video-box">
-        <video src="video 1.mp4" muted autoplay loop playsinline onclick="openUsVideo(this)"></video>
+        <video src="video 1.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
         <p class="video-label">First Meet 💕</p>
       </div>
       <div class="video-box">
-        <video src="memory-video.mp4" muted autoplay loop playsinline onclick="openUsVideo(this)"></video>
+        <video src="memory-video.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
         <p class="video-label">Date 🌙</p>
       </div>
       <div class="video-box">
-        <video src="video3.mp4" muted autoplay loop playsinline onclick="openUsVideo(this)"></video>
+        <video src="video3.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
         <p class="video-label">Walk ✨</p>
       </div>
       <div class="video-box">
-        <video src="video4.mp4" muted autoplay loop playsinline onclick="openUsVideo(this)"></video>
+        <video src="video4.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
         <p class="video-label">Holding 🤍</p>
       </div>
       <div class="video-box">
-        <video src="video 5.mp4" muted autoplay loop playsinline onclick="openUsVideo(this)"></video>
+        <video src="video 5.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
         <p class="video-label">Smile 🫶🏻</p>
       </div>
       <div class="video-box">
-        <video src="video6.mp4" muted autoplay loop playsinline onclick="openUsVideo(this)"></video>
+        <video src="video6.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
         <p class="video-label">Saturday 💗</p>
       </div>
     </div>
@@ -3404,10 +3380,27 @@ function openUsVideo(videoElement) {
   const mainVideo = document.getElementById('usMainVideo');
   const bgMusic   = document.getElementById('bgMusic');
   bgMusic.pause();
-  popup.style.display = 'flex';
-  mainVideo.src   = videoElement.getAttribute('src');
+
+  const src = videoElement.getAttribute('src');
+
+  // If same src already loaded, just seek to start — instant play
+  if (mainVideo.getAttribute('src') === src) {
+    mainVideo.currentTime = 0;
+  } else {
+    mainVideo.src = src;
+    mainVideo.load();
+  }
+
   mainVideo.muted = false;
-  mainVideo.play();
+  popup.style.display = 'flex';
+
+  // Play immediately; if not ready, play on canplay
+  const playPromise = mainVideo.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      mainVideo.addEventListener('canplay', () => mainVideo.play(), { once: true });
+    });
+  }
 }
 
 function closeUsVideo() {
