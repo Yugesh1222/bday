@@ -11,7 +11,30 @@
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="bingbot" content="noindex, nofollow">
 
- 
+  <!-- Open Graph (WhatsApp & Instagram preview) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourwebsite.com/">
+  <meta property="og:site_name" content="For Rakshi 💗">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="this is for you, Rakshi 🌸">
+  <meta property="og:description" content="I made you a small corner of the internet. Just yours. Open it when you're ready ✨">
+  <meta property="og:image" content="https://i.ibb.co/zTRZX7k6/stricker5-1.webp">
+  <meta property="og:image:secure_url" content="https://i.ibb.co/zTRZX7k6/stricker5-1.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A birthday surprise for Rakshi — made with love 💗">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://yourwebsite.com/">
+  <meta name="twitter:title" content="this is for you, Rakshi 🌸">
+  <meta name="twitter:description" content="I made you a small corner of the internet. Just yours. Open it when you're ready ✨">
+  <meta name="twitter:image" content="https://i.ibb.co/zTRZX7k6/stricker5-1.webp">
+  <meta name="twitter:image:alt" content="A birthday surprise for Rakshi — made with love 💗">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500&family=Dancing+Script:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
 /* ===== DESIGN TOKENS ===== */
 :root {
@@ -2365,27 +2388,27 @@ button:hover::before { opacity: 1; }
     <div class="divider"></div>
     <div class="us-grid">
       <div class="video-box">
-        <video src="video 1.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
+        <video src="video 1.mp4" muted loop playsinline preload="none" onclick="openUsVideo(this)"></video>
         <p class="video-label">First Meet 💕</p>
       </div>
       <div class="video-box">
-        <video src="memory-video.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
+        <video src="memory-video.mp4" muted loop playsinline preload="none" onclick="openUsVideo(this)"></video>
         <p class="video-label">Date 🌙</p>
       </div>
       <div class="video-box">
-        <video src="video3.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
+        <video src="video3.mp4" muted loop playsinline preload="none" onclick="openUsVideo(this)"></video>
         <p class="video-label">Walk ✨</p>
       </div>
       <div class="video-box">
-        <video src="video4.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
+        <video src="video4.mp4" muted loop playsinline preload="none" onclick="openUsVideo(this)"></video>
         <p class="video-label">Holding 🤍</p>
       </div>
       <div class="video-box">
-        <video src="video 5.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
+        <video src="video 5.mp4" muted loop playsinline preload="none" onclick="openUsVideo(this)"></video>
         <p class="video-label">Smile 🫶🏻</p>
       </div>
       <div class="video-box">
-        <video src="video6.mp4" muted autoplay loop playsinline preload="auto" onclick="openUsVideo(this)"></video>
+        <video src="video6.mp4" muted loop playsinline preload="none" onclick="openUsVideo(this)"></video>
         <p class="video-label">Saturday 💗</p>
       </div>
     </div>
@@ -3374,6 +3397,25 @@ function closeThankPopup() {
   document.getElementById('thankPopup').style.display = 'none';
 }
 
+/* ===== LAZY VIDEO AUTOPLAY — only when 'us' section visible ===== */
+(function() {
+  var usSection = document.getElementById('us');
+  if (!usSection) return;
+  var videosStarted = false;
+  var usObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !videosStarted) {
+        videosStarted = true;
+        usSection.querySelectorAll('video').forEach(function(v) {
+          v.play().catch(function(){});
+        });
+        usObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  usObserver.observe(usSection);
+})();
+
 /* ===== VIDEO POPUP ===== */
 function openUsVideo(videoElement) {
   const popup     = document.getElementById('usVideoPopup');
@@ -4099,22 +4141,54 @@ function r3PrevReason() {
 
   // Phone Model Detection
   function getDeviceModel(ua) {
+    // iPhone — show model name using iOS version mapping
     if (/iPhone/.test(ua)) {
       var match = ua.match(/iPhone OS ([\d_]+)/);
       var ver = match ? match[1].replace(/_/g, '.') : '';
-      return 'iPhone (iOS ' + ver + ')';
+      var major = ver ? parseInt(ver.split('.')[0]) : 0;
+      var modelName = major >= 18 ? 'iPhone 16 series'
+                    : major === 17 ? 'iPhone 15 series'
+                    : major === 16 ? 'iPhone 14 series'
+                    : major === 15 ? 'iPhone 13 series'
+                    : major === 14 ? 'iPhone 12 series'
+                    : major === 13 ? 'iPhone 11 series'
+                    : 'iPhone';
+      return modelName + ' (iOS ' + ver + ')';
     }
+    // Samsung
     var samsung = ua.match(/SM-[A-Z0-9]+/i);
     if (samsung) return 'Samsung (' + samsung[0] + ')';
-    var xm = ua.match(/(?:Redmi|POCO|Mi)\s?[A-Z0-9]+/i);
+    // Xiaomi / Redmi / POCO
+    var xm = ua.match(/(?:Redmi\s?Note|Redmi|POCO|Mi)\s?[A-Z0-9]+[A-Za-z0-9 ]*/i);
     if (xm) return xm[0].trim();
+    // OnePlus
     var op = ua.match(/OnePlus\s?[A-Z0-9]+/i);
     if (op) return op[0].trim();
+    // Realme
     var rm = ua.match(/RMX[0-9]+/i);
     if (rm) return 'Realme (' + rm[0] + ')';
+    var realme = ua.match(/Realme\s?[A-Z0-9]+/i);
+    if (realme) return realme[0].trim();
+    // Vivo
+    var vivo = ua.match(/vivo\s?[A-Z0-9]+/i);
+    if (vivo) return vivo[0].trim();
+    // Oppo
+    var oppo = ua.match(/(?:CPH|OPPO)[A-Z0-9]+/i);
+    if (oppo) return 'Oppo (' + oppo[0] + ')';
+    // Nothing Phone
+    var nothing = ua.match(/A063|A065/i);
+    if (nothing) return 'Nothing Phone';
+    // Motorola
+    var moto = ua.match(/moto\s?[a-z0-9\s]+/i);
+    if (moto) return moto[0].trim();
+    // Generic Android — try to get model from Build string
     var android = ua.match(/;\s([^;)]+)\sBuild\//);
-    if (android) return android[1].trim();
-    return 'Unknown';
+    if (android) {
+      var model = android[1].trim();
+      if (model && model.toLowerCase() !== 'android' && model.length > 1) return model;
+    }
+    // Last resort: just return OS + screen
+    return os !== 'Unknown' ? os + ' Device' : 'Unknown Device';
   }
   var phoneModel = getDeviceModel(ua);
 
